@@ -1,5 +1,6 @@
 from Model import Employee, Job, Assignment
-from db import session
+from db import session, engine
+
 
 
 '''
@@ -7,6 +8,7 @@ Query all employee records from the employee table
 And query employee with condition, emp_num > 101
 '''
 # employees = session.query(Employee).all()
+
 # employees = session.query(Employee).filter(Employee.emp_num > 101).all()
 # for employee in employees:
 #     print(employee.emp_lname, employee.emp_fname, employee.emp_hiredate)
@@ -43,4 +45,17 @@ Delete employee record
 
 '''
 Query assigment where assign_date is larger than 2010-01-01
+
 '''
+# assignment = session.query(Assignment).filter(Assignment.assign_date > "2010-01-01").first()
+#     for
+connection = engine.connect()
+query = "SELECT" * FROM employee WHERE emp_num > :value"
+sql_expression = text(query)
+param = {'value': 101}
+result = connection.excute(sql_expression, param)
+
+for row in result:
+    print(row[0])
+    
+connection.close()
